@@ -1,5 +1,5 @@
 ﻿using ATMUygulamasi.src.display;
-using ATMUygulamasi.src.display.users;
+using ATMUygulamasi.src.users;
 
 internal class Program
 {
