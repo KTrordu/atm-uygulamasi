@@ -1,0 +1,38 @@
+@startuml ATMUygulamasi
+
+class Customer {
+    -FirstName: string
+    -LastName: string
+    -NationalIDNumber: string
+    -PhoneNumber: string
+    -DateOfBirth: string = "1970-01-01"
+
+    +Customer(firstName: string, lastName: string, NationalIDNumber: string, PhoneNumber: string): void
+    +FullName(firstName: string, lastName: string): string
+}
+
+class ExternalCustomer {
+    -ExternalCustomerID: string
+    -ExternalBankName: string
+    -ExternalAccountID: string
+
+    +ExternalCustomer(firstName: string, lastName: string, NationalIDNumber: string,
+    PhoneNumber: string, externalCustomerID: string, externalBankName: string, ExternalAccountID: string): void
+}
+
+class InternalCustomer {
+    -InternalCustomerID: string
+    -Balance: decimal = 0
+    -CardPIN: string = "0000"
+    -CardNumber: string = "0000000000000000"
+    -CardExpiryDate: string = "2034-01-01"
+    -CardStatus: string = "Passive"
+
+    +InternalCustomer(firstName: string, lastName: string, NationalIDNumber: string,
+    PhoneNumber: string, internalCustomerID: string): void
+}
+
+Customer <|-- ExternalCustomer
+Customer <|-- InternalCustomer
+
+@enduml
