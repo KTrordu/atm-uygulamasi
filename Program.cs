@@ -8,10 +8,10 @@ internal class Program
     {
         ScreenDisplay screenDisplay = new ScreenDisplay();
         OptionHandler optionHandler = new OptionHandler();
-        ExternalCustomerHandler externalCustomerHandler = new ExternalCustomerHandler();
-        InternalCustomerHandler internalCustomerHandler = new InternalCustomerHandler();
+        ICustomerHandler externalCustomerHandler = new ExternalCustomerHandler();
+        ICustomerHandler internalCustomerHandler = new InternalCustomerHandler();
+        ExitATMHandler exitATMHandler = new ExitATMHandler();
 
-        screenDisplay.DisplayStartUpScreen();
-        optionHandler.GetInput();
+        optionHandler.GetMainScreenInput(externalCustomerHandler, internalCustomerHandler, exitATMHandler, screenDisplay);
     }
 }

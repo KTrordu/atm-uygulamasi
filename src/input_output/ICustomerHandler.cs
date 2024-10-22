@@ -7,6 +7,6 @@ namespace ATMUygulamasi.src.input_output
 {
     public interface ICustomerHandler
     {
-        
+        public void DisplayCustomerScreen(ExitATMHandler exitATMHandler);
     }
 }

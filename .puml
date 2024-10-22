@@ -2,7 +2,6 @@
 
 class ScreenDisplay {
     +DisplayStartUpScreen(): void
-    +DisplayExternalCustomerScreen(): void
 }
 
 class Customer {
@@ -38,38 +37,39 @@ class InternalCustomer {
 }
 
 class OptionHandler {
-    +GetInput(): void
+    +GetMainScreenInput(externalCustomerHandler: ICustomerHandler, internalCustomerHandler: ICustomerHandler, 
+    exitATMHandler: ExitATMHandler, screenDisplay: ScreenDisplay): void
 }
 
 interface ICustomerHandler {
-
-}
-
-interface IExternalCustomerHandler {
-
-}
-
-interface IInternalCustomerHandler {
-
+    +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
 }
 
 class ExternalCustomerHandler {
-
+    +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
 }
 
 class InternalCustomerHandler {
+    +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
+    -GetCustomerInput(exitATMHandler: ExitATMHandler): void
+}
 
+class ExitATMHandler {
+    +ExitATM(): void
 }
 
 Customer <|-- ExternalCustomer
 Customer <|-- InternalCustomer
 
-ICustomerHandler <|-- IExternalCustomerHandler
-ICustomerHandler <|-- IInternalCustomerHandler
 ICustomerHandler <|-- ExternalCustomerHandler
 ICustomerHandler <|-- InternalCustomerHandler
 
-IExternalCustomerHandler <|-- ExternalCustomerHandler
-IInternalCustomerHandler <|-- InternalCustomerHandler
+OptionHandler --> ICustomerHandler
+OptionHandler --> ScreenDisplay
+
+ICustomerHandler --> ExitATMHandler
+ExternalCustomerHandler --> ExitATMHandler
+InternalCustomerHandler --> ExitATMHandler
+OptionHandler --> ExitATMHandler
 
 @enduml

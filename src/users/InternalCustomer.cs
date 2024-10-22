@@ -8,16 +8,23 @@ namespace ATMUygulamasi.src.users
     public class InternalCustomer : Customer
     {
         public string InternalCustomerID { get; set; }
-        public decimal Balance { get; set; } = 0;
-        public string CardPIN { get; set; } = "0000";
-        public string CardNumber { get; set; } = "0000000000000000";
-        public string CardExpiryDate { get; set; } = DateTime.Parse("2034-01-01").ToString("yyyy-MM-dd");
-        public string CardStatus { get; set; } = "Passive";
+        public decimal Balance { get; set; }
+        public string CardPIN { get; set; }
+        public string CardNumber { get; set; }
+        public string CardExpiryDate { get; set; }
+        public string CardStatus { get; set; }
 
-        public InternalCustomer(string firstName, string lastName, string nationalIDNumber, string phoneNumber, string internalCustomerID) 
+        public InternalCustomer(string firstName, string lastName, string nationalIDNumber, string phoneNumber, string internalCustomerID,
+        decimal balance = 0, string cardPIN = "0000", string cardNumber = "0000000000000000", string cardExpiryDate = "2034-01-01",
+        string cardStatus = "Passive") 
         : base(firstName, lastName, nationalIDNumber, phoneNumber)
         {
             InternalCustomerID = internalCustomerID;
+            Balance = balance;
+            CardPIN = cardPIN;
+            CardNumber = cardNumber;
+            CardExpiryDate = cardExpiryDate;
+            CardStatus = cardStatus;
         }
     }
 }

@@ -2,16 +2,20 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ATMUygulamasi.src.display;
 
 namespace ATMUygulamasi.src.input_output
 {
     public class OptionHandler
     {
-        public void GetInput()
+        public void GetMainScreenInput(ICustomerHandler externalCustomerHandler, 
+        ICustomerHandler internalCustomerHandler, ExitATMHandler exitATMHandler, ScreenDisplay screenDisplay)
         {
             bool shouldExit = false;
             while (!shouldExit)
             {
+                Console.Clear();
+                screenDisplay.DisplayStartUpScreen();
                 try
                 {
                     string? readResult = Console.ReadLine();
@@ -19,16 +23,16 @@ namespace ATMUygulamasi.src.input_output
                         throw new IOException("Please enter a non-empty value.\n");
                     else
                     {
-                        switch (readResult)
+                        switch (readResult.ToLower().Trim())
                         {
                             case "1":
 
                                 break;
                             case "2":
-                                
+                                internalCustomerHandler.DisplayCustomerScreen(exitATMHandler);
                                 break;
-                            case "!":
-                                shouldExit = true;
+                            case "exit":
+                                exitATMHandler.ExitATM();
                                 break;
                             default:
                                 throw new IOException("Please enter a valid option.\n");
@@ -37,7 +41,9 @@ namespace ATMUygulamasi.src.input_output
                 }
                 catch (Exception ex)
                 {
+                    Console.Clear();
                     Console.WriteLine(ex.Message);
+                    screenDisplay.DisplayStartUpScreen();
                 }
             }
         }
