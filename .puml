@@ -1,5 +1,10 @@
 @startuml ATMUygulamasi
 
+class ScreenDisplay {
+    +DisplayStartUpScreen(): void
+    +DisplayExternalCustomerScreen(): void
+}
+
 class Customer {
     -FirstName: string
     -LastName: string
@@ -32,16 +37,39 @@ class InternalCustomer {
     PhoneNumber: string, internalCustomerID: string): void
 }
 
-' interface IInputHandler {
-'     +GetInput(): string
-' }
+class OptionHandler {
+    +GetInput(): void
+}
 
-' class OptionHandler {
-'     +GetInput(): string
-' }
+interface ICustomerHandler {
+
+}
+
+interface IExternalCustomerHandler {
+
+}
+
+interface IInternalCustomerHandler {
+
+}
+
+class ExternalCustomerHandler {
+
+}
+
+class InternalCustomerHandler {
+
+}
 
 Customer <|-- ExternalCustomer
 Customer <|-- InternalCustomer
-' IInputHandler <|-- OptionHandler
+
+ICustomerHandler <|-- IExternalCustomerHandler
+ICustomerHandler <|-- IInternalCustomerHandler
+ICustomerHandler <|-- ExternalCustomerHandler
+ICustomerHandler <|-- InternalCustomerHandler
+
+IExternalCustomerHandler <|-- ExternalCustomerHandler
+IInternalCustomerHandler <|-- InternalCustomerHandler
 
 @enduml

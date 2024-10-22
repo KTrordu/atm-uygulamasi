@@ -5,8 +5,8 @@ using System.Threading.Tasks;
 
 namespace ATMUygulamasi.src.input_output
 {
-    public interface IInputHandler
+    public interface IExternalCustomerHandler : ICustomerHandler
     {
-        public string GetInput();
+        
     }
 }

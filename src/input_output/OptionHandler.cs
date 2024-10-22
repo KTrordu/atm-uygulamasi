@@ -5,28 +5,41 @@ using System.Threading.Tasks;
 
 namespace ATMUygulamasi.src.input_output
 {
-    public class OptionHandler : IInputHandler
+    public class OptionHandler
     {
-        public string GetInput()
+        public void GetInput()
         {
-            try
+            bool shouldExit = false;
+            while (!shouldExit)
             {
-                bool shouldExit = false;
-
-                while (!shouldExit)
+                try
                 {
                     string? readResult = Console.ReadLine();
                     if (readResult == null || readResult.ToLower().Trim().Equals(""))
-                        throw new IOException("Please enter a non-empty value.");
-                    else return readResult;
+                        throw new IOException("Please enter a non-empty value.\n");
+                    else
+                    {
+                        switch (readResult)
+                        {
+                            case "1":
+
+                                break;
+                            case "2":
+                                
+                                break;
+                            case "!":
+                                shouldExit = true;
+                                break;
+                            default:
+                                throw new IOException("Please enter a valid option.\n");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
                 }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-            return new IOException("An error occurred. Please contact your program supplier.").Message;
         }
     }
 }

@@ -17,5 +17,11 @@ namespace ATMUygulamasi.src.display
             Console.WriteLine("! - Type \"exit\" to exit.");
             Console.WriteLine();
         }
+
+        public void DisplayExternalCustomerScreen()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine();
+        }
     }
 }
