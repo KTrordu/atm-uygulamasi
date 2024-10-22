@@ -32,7 +32,16 @@ class InternalCustomer {
     PhoneNumber: string, internalCustomerID: string): void
 }
 
+' interface IInputHandler {
+'     +GetInput(): string
+' }
+
+' class OptionHandler {
+'     +GetInput(): string
+' }
+
 Customer <|-- ExternalCustomer
 Customer <|-- InternalCustomer
+' IInputHandler <|-- OptionHandler
 
 @enduml
