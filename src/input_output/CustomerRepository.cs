@@ -10,7 +10,7 @@ namespace ATMUygulamasi.src.input_output
     {
         private static CustomerRepository? _instance = null;
 
-        private CustomerRepository() { }
+        private CustomerRepository() {}
 
         public static CustomerRepository Instance
         {

@@ -37,7 +37,7 @@ class InternalCustomer {
 }
 
 class OptionHandler {
-    +GetMainScreenInput(externalCustomerHandler: ICustomerHandler, internalCustomerHandler: ICustomerHandler, 
+    +GetMainScreenInput(externalCustomerHandler: ICustomerHandler, internalCustomerHandler: ICustomerHandler,
     exitATMHandler: ExitATMHandler, screenDisplay: ScreenDisplay): void
 }
 
@@ -51,7 +51,19 @@ class ExternalCustomerHandler {
 
 class InternalCustomerHandler {
     +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
+    +DisplayLoginScreen(): void
     -GetCustomerInput(exitATMHandler: ExitATMHandler): void
+    -LoginWithCardNumber(exitATMHandler: ExitATMHandler, customerRepository: CustomerRepository): void
+    -AuthenticateCustomer(customerRepository: CustomerRepository, cardDetailsEntered: List<string>): InternalCustomer?
+}
+
+class CustomerRepository {
+    - _instance: CustomerRepository? = null
+    + Instance: CustomerRepository
+    + customers: List<Customer>
+    + Customers: List<Customer>
+
+    - CustomerRepository()
 }
 
 class ExitATMHandler {
@@ -64,12 +76,14 @@ Customer <|-- InternalCustomer
 ICustomerHandler <|-- ExternalCustomerHandler
 ICustomerHandler <|-- InternalCustomerHandler
 
-OptionHandler --> ICustomerHandler
-OptionHandler --> ScreenDisplay
+OptionHandler ..> ICustomerHandler
+OptionHandler ..> ScreenDisplay
 
-ICustomerHandler --> ExitATMHandler
-ExternalCustomerHandler --> ExitATMHandler
-InternalCustomerHandler --> ExitATMHandler
-OptionHandler --> ExitATMHandler
+ICustomerHandler ..> ExitATMHandler
+ExternalCustomerHandler ..> ExitATMHandler
+InternalCustomerHandler ..> ExitATMHandler
+OptionHandler ..> ExitATMHandler
+
+InternalCustomerHandler ..> CustomerRepository
 
 @enduml
