@@ -24,11 +24,11 @@ namespace ATMUygulamasi.src.input_output
             }
         }
 
-        public static List<Customer> customers = [
+        public static List<InternalCustomer> customers = [
             new InternalCustomer("John", "Doe", "11111111111", "5051112233", "1")
         ];
 
-        public List<Customer> Customers
+        public List<InternalCustomer> Customers
         {
             get
             {

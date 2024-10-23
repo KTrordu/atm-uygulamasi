@@ -23,6 +23,7 @@ namespace ATMUygulamasi.src.input_output
         {
             Console.WriteLine("\n*** Login ***\n");
             Console.WriteLine("Please enter your card number and your card pin with 1 space between them.\n");
+            Console.WriteLine("Type \"exit\" to exit the ATM.\n");
 
         }
 
@@ -78,18 +79,24 @@ namespace ATMUygulamasi.src.input_output
 
                     if (readResult == null || readResult.ToLower().Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
-                    else if(!int.TryParse(readResult.Trim(), out int cardNumber))
+                    else if (!readResult.Any(char.IsDigit))
                         throw new IOException("Please enter a valid card number and pin.\n");
-                    else if(readResult.Trim().Length != 20)
-                        throw new IOException("Your card number must be 20 characters long and your pin must be 4 characters long.\n");
+                    else if (readResult.Count(count => count != ' ') != 20 || readResult.Split(" ")[0].Length != 16 || readResult.Split(" ")[1].Length != 4)
+                        throw new IOException("Your card number must be 16 characters long and your pin must be 4 characters long.\n");
+                    else if (readResult.ToLower().Trim() == "exit")
+                        exitATMHandler.ExitATM();
                     else
                     {
-                        string cardNumberEntered = readResult.Trim().Substring(0, 16);
-                        string cardPINEntered = readResult.Trim().Substring(16, 4);
-                        List<string> cardDetailsEntered = new List<string>() { cardNumberEntered, cardPINEntered };
+                        string[] cardDetailsEntered = readResult.Split(" ");
+                        string cardNumberEntered = cardDetailsEntered[0];
+                        string cardPINEntered = cardDetailsEntered[1];
+                        List<string> cardDetailsToCheck = new List<string>() { cardNumberEntered, cardPINEntered };
 
-                        if (AuthenticateCustomer(customerRepository, cardDetailsEntered) != null)
-                            internalCustomerLoggedIn = AuthenticateCustomer(customerRepository, cardDetailsEntered);
+                        if (AuthenticateCustomer(customerRepository, cardDetailsToCheck) != null)
+                        {
+                            internalCustomerLoggedIn = AuthenticateCustomer(customerRepository, cardDetailsToCheck);
+                            Console.WriteLine("\nYou have successfully logged in.\n");
+                        }
                         else
                         {
                             throw new IOException("Your card number or pin is incorrect.\n");
@@ -103,11 +110,11 @@ namespace ATMUygulamasi.src.input_output
             }
         }
 
-        private InternalCustomer? AuthenticateCustomer(CustomerRepository customerRepository, List<string> cardDetailsEntered)
+        private InternalCustomer? AuthenticateCustomer(CustomerRepository customerRepository, List<string> cardDetailsToCheck)
         {
             foreach (InternalCustomer customer in customerRepository.Customers)
             {
-                if (cardDetailsEntered[0] == customer.CardNumber && cardDetailsEntered[1] == customer.CardPIN)
+                if (cardDetailsToCheck[0] == customer.CardNumber && cardDetailsToCheck[1] == customer.CardPIN)
                 {
                     return customer;
                 }
