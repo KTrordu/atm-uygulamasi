@@ -22,7 +22,7 @@ namespace ATMUygulamasi.src.users
             DateOfBirth = dateOfBirth;
         }
 
-        public string FullName(string FirstName, string LastName)
+        public string FullName()
         {
             return $"{FirstName} {LastName}";
         }

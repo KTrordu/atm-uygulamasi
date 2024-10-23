@@ -95,7 +95,9 @@ namespace ATMUygulamasi.src.input_output
                         if (AuthenticateCustomer(customerRepository, cardDetailsToCheck) != null)
                         {
                             internalCustomerLoggedIn = AuthenticateCustomer(customerRepository, cardDetailsToCheck);
+                            Console.Clear();
                             Console.WriteLine("\nYou have successfully logged in.\n");
+                            DisplayLoggedInCustomerScreen(exitATMHandler, internalCustomerLoggedIn!);
                         }
                         else
                         {
@@ -121,6 +123,19 @@ namespace ATMUygulamasi.src.input_output
             }
 
             return null;
+        }
+
+        private async void DisplayLoggedInCustomerScreen(ExitATMHandler exitATMHandler, InternalCustomer internalCustomer)
+        {
+            await Task.Delay(1000);
+            Console.Clear();
+            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName} ***"); //TODO fix this
+            Console.WriteLine("1 - Withdraw money.");
+            Console.WriteLine("2 - Deposit money.");
+            Console.WriteLine("3 - View balance.");
+            Console.WriteLine("4 - Transfer money.");
+            Console.WriteLine("5 - Return to main menu.");
+            Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
         }
     }
 }
