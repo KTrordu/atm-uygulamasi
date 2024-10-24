@@ -34,7 +34,7 @@ class InternalCustomer {
 
     +InternalCustomer(firstName: string, lastName: string, NationalIDNumber: string,
     PhoneNumber: string, internalCustomerID: string): void
-    +SetBalance(balance: decimal, isWithdraw: boolean): void
+    +SetBalance(balance: decimal, [isWithdraw: boolean]): void
 }
 
 class OptionHandler {
@@ -52,12 +52,18 @@ class ExternalCustomerHandler {
 
 class InternalCustomerHandler {
     +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
-    +DisplayLoginScreen(): void
 
+    -DisplayLoginScreen(): void
+    -DisplayLoggedInCustomerScreen(internalCustomer: InternalCustomer): void
+    -GetLoggedInCustomerInput(exitATMHandler: ExitATMHandler, internalCustomer: InternalCustomer): void
     -GetCustomerInput(exitATMHandler: ExitATMHandler): void
     -LoginWithCardNumber(exitATMHandler: ExitATMHandler, customerRepository: CustomerRepository): void
     -AuthenticateCustomer(customerRepository: CustomerRepository, cardDetailsToCheck: List<string>): InternalCustomer?
-    -DisplayLoggedInCustomerScreen(internalCustomer: InternalCustomer): void
+    -WithdrawMoney(internalCustomer: InternalCustomer): void
+    -DepositMoney(internalCustomer: InternalCustomer): void
+    -ViewBalance(internalCustomer: InternalCustomer): void
+    -TransferMoney(internalCustomer: InternalCustomer, customerRepository: CustomerRepository): void
+    -DoTransaction(sender: InternalCustomer, recipient: InternalCustomer, amount: decimal): void
 }
 
 class CustomerRepository {
