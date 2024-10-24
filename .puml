@@ -34,6 +34,7 @@ class InternalCustomer {
 
     +InternalCustomer(firstName: string, lastName: string, NationalIDNumber: string,
     PhoneNumber: string, internalCustomerID: string): void
+    +SetBalance(balance: decimal, isWithdraw: boolean): void
 }
 
 class OptionHandler {
@@ -52,9 +53,11 @@ class ExternalCustomerHandler {
 class InternalCustomerHandler {
     +DisplayCustomerScreen(exitATMHandler: ExitATMHandler): void
     +DisplayLoginScreen(): void
+
     -GetCustomerInput(exitATMHandler: ExitATMHandler): void
     -LoginWithCardNumber(exitATMHandler: ExitATMHandler, customerRepository: CustomerRepository): void
-    -AuthenticateCustomer(customerRepository: CustomerRepository, cardDetailsEntered: List<string>): InternalCustomer?
+    -AuthenticateCustomer(customerRepository: CustomerRepository, cardDetailsToCheck: List<string>): InternalCustomer?
+    -DisplayLoggedInCustomerScreen(internalCustomer: InternalCustomer): void
 }
 
 class CustomerRepository {
@@ -85,5 +88,6 @@ InternalCustomerHandler ..> ExitATMHandler
 OptionHandler ..> ExitATMHandler
 
 InternalCustomerHandler ..> CustomerRepository
+InternalCustomerHandler ..> InternalCustomer
 
 @enduml

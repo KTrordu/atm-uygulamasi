@@ -19,12 +19,72 @@ namespace ATMUygulamasi.src.input_output
             GetCustomerInput(exitATMHandler);
         }
 
-        public void DisplayLoginScreen()
+        private void DisplayLoginScreen()
         {
             Console.WriteLine("\n*** Login ***\n");
             Console.WriteLine("Please enter your card number and your card pin with 1 space between them.\n");
             Console.WriteLine("Type \"exit\" to exit the ATM.\n");
 
+        }
+
+        private async void DisplayLoggedInCustomerScreen(InternalCustomer internalCustomer)
+        {
+            await Task.Delay(1000);
+            Console.Clear();
+            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName()} ***");
+            Console.WriteLine("1 - Withdraw money.");
+            Console.WriteLine("2 - Deposit money.");
+            Console.WriteLine("3 - View balance.");
+            Console.WriteLine("4 - Transfer money.");
+            Console.WriteLine("5 - Return to main menu.");
+            Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
+        }
+
+        private void GetLoggedInCustomerInput(ExitATMHandler exitATMHandler, InternalCustomer internalCustomer)
+        {
+            bool shouldExit = false;
+            while (!shouldExit)
+            {
+                try
+                {
+                    string? readResult = Console.ReadLine();
+                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                        throw new IOException("Please enter a non-empty value.\n");
+                    else
+                    {
+                        switch (readResult)
+                        {
+                            case "1":
+                                WithdrawMoney(internalCustomer);
+                                break;
+
+                            case "2":
+
+                                break;
+                            case "3":
+
+                                break;
+                            case "4":
+
+                                break;
+                            case "5":
+                                shouldExit = true;
+                                break;
+                            case "exit":
+                                exitATMHandler.ExitATM();
+                                break;
+                            default:
+                                throw new IOException("Please enter a valid option.\n");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                
+                DisplayLoggedInCustomerScreen(internalCustomer);
+            }
         }
 
         private void GetCustomerInput(ExitATMHandler exitATMHandler)
@@ -97,7 +157,8 @@ namespace ATMUygulamasi.src.input_output
                             internalCustomerLoggedIn = AuthenticateCustomer(customerRepository, cardDetailsToCheck);
                             Console.Clear();
                             Console.WriteLine("\nYou have successfully logged in.\n");
-                            DisplayLoggedInCustomerScreen(exitATMHandler, internalCustomerLoggedIn!);
+                            DisplayLoggedInCustomerScreen(internalCustomerLoggedIn!);
+                            GetLoggedInCustomerInput(exitATMHandler, internalCustomerLoggedIn!);
                         }
                         else throw new IOException("Your card number or pin is incorrect.\n");
                     }
@@ -122,17 +183,35 @@ namespace ATMUygulamasi.src.input_output
             return null;
         }
 
-        private async void DisplayLoggedInCustomerScreen(ExitATMHandler exitATMHandler, InternalCustomer internalCustomer)
+        private void WithdrawMoney(InternalCustomer internalCustomer)
         {
-            await Task.Delay(1000);
-            Console.Clear();
-            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName()} ***");
-            Console.WriteLine("1 - Withdraw money.");
-            Console.WriteLine("2 - Deposit money.");
-            Console.WriteLine("3 - View balance.");
-            Console.WriteLine("4 - Transfer money.");
-            Console.WriteLine("5 - Return to main menu.");
-            Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
+            bool shouldExit = false;
+            while (!shouldExit)
+            {
+                Console.Clear();
+                Console.WriteLine("Enter amount to withdraw: ");
+
+                try
+                {
+                    string? readResult = Console.ReadLine();
+                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                        throw new IOException("Please enter a non-empty value.\n");
+                    else
+                    {
+                        shouldExit = true;
+                        decimal amount = Convert.ToDecimal(readResult);
+                        internalCustomer.SetBalance(amount);
+
+                        Console.WriteLine($"Your new balance: {internalCustomer.Balance}");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
         }
     }
 }
