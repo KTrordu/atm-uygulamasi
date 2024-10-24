@@ -62,7 +62,7 @@ namespace ATMUygulamasi.src.input_output
                                 DepositMoney(internalCustomer);
                                 break;
                             case "3":
-
+                                ViewBalance(internalCustomer);
                                 break;
                             case "4":
 
@@ -245,6 +245,14 @@ namespace ATMUygulamasi.src.input_output
                     Console.WriteLine(ex.Message);
                 }
             }
+        }
+
+        private void ViewBalance(InternalCustomer internalCustomer)
+        {
+            Console.Clear();
+            Console.WriteLine($"Your balance: {internalCustomer.Balance}");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
         }
     }
 }
