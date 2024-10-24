@@ -59,7 +59,7 @@ namespace ATMUygulamasi.src.input_output
                                 break;
 
                             case "2":
-
+                                DepositMoney(internalCustomer);
                                 break;
                             case "3":
 
@@ -198,9 +198,42 @@ namespace ATMUygulamasi.src.input_output
                         throw new IOException("Please enter a non-empty value.\n");
                     else
                     {
-                        shouldExit = true;
                         decimal amount = Convert.ToDecimal(readResult);
                         internalCustomer.SetBalance(amount);
+
+                        shouldExit = true;
+
+                        Console.WriteLine($"Your new balance: {internalCustomer.Balance}");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void DepositMoney(InternalCustomer internalCustomer)
+        {
+            bool shouldExit = false;
+            while (!shouldExit)
+            {
+                Console.Clear();
+                Console.WriteLine("Enter amount to deposit: ");
+
+                try
+                {
+                    string? readResult = Console.ReadLine();
+                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                        throw new IOException("Please enter a non-empty value.\n");
+                    else
+                    {
+                        decimal amount = Convert.ToDecimal(readResult);
+                        internalCustomer.SetBalance(amount, false);
+
+                        shouldExit = true;
 
                         Console.WriteLine($"Your new balance: {internalCustomer.Balance}");
                         Console.WriteLine("Press any key to continue...");
