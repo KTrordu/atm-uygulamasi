@@ -9,7 +9,7 @@ namespace ATMUygulamasi.src.display
     {
         public void DisplayStartUpScreen()
         {
-            Console.WriteLine("\nWelcome to the ATM.\n");
+            Console.WriteLine("Welcome to the ATM.\n");
             Console.WriteLine("1 - For external customers.");
             Console.WriteLine("2 - For internal customers.");
             Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");

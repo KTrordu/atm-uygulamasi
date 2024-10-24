@@ -11,7 +11,7 @@ namespace ATMUygulamasi.src.input_output
         public void DisplayCustomerScreen(ExitATMHandler exitATMHandler)
         {
             Console.Clear();
-            Console.WriteLine("\n*** Internal Customer Processes ***");
+            Console.WriteLine("*** Internal Customer Processes ***\n");
             Console.WriteLine("1 - Login with your card number.");
             Console.WriteLine("2 - Return to main menu.");
             Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
@@ -21,7 +21,7 @@ namespace ATMUygulamasi.src.input_output
 
         private void DisplayLoginScreen()
         {
-            Console.WriteLine("\n*** Login ***\n");
+            Console.WriteLine("*** Login ***\n");
             Console.WriteLine("Please enter your card number and your card pin with 1 space between them.\n");
             Console.WriteLine("Type \"exit\" to exit the ATM.\n");
 
@@ -31,7 +31,7 @@ namespace ATMUygulamasi.src.input_output
         {
             await Task.Delay(1000);
             Console.Clear();
-            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName()} ***");
+            Console.WriteLine($"*** Welcome, {internalCustomer.FullName()} ***\n");
             Console.WriteLine("1 - Withdraw money.");
             Console.WriteLine("2 - Deposit money.");
             Console.WriteLine("3 - View balance.");
@@ -65,7 +65,7 @@ namespace ATMUygulamasi.src.input_output
                                 ViewBalance(internalCustomer);
                                 break;
                             case "4":
-
+                                TransferMoney(internalCustomer, CustomerRepository.Instance);
                                 break;
                             case "5":
                                 shouldExit = true;
@@ -82,7 +82,7 @@ namespace ATMUygulamasi.src.input_output
                 {
                     Console.WriteLine(ex.Message);
                 }
-                
+
                 DisplayLoggedInCustomerScreen(internalCustomer);
             }
         }
@@ -251,6 +251,59 @@ namespace ATMUygulamasi.src.input_output
         {
             Console.Clear();
             Console.WriteLine($"Your balance: {internalCustomer.Balance}");
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
+
+        private void TransferMoney(InternalCustomer internalCustomer, CustomerRepository customerRepository)
+        {
+            Console.Clear();
+
+            bool shouldExit = false;
+            while (!shouldExit)
+            {
+                Console.WriteLine("Enter the Customer ID of the recipient: ");
+
+                try
+                {
+                    string? readResult = Console.ReadLine();
+                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                        throw new IOException("Please enter a non-empty value.\n");
+                    else
+                    {
+                        foreach (InternalCustomer customer in customerRepository.Customers)
+                        {
+                            if (customer.InternalCustomerID == readResult)
+                            {
+                                Console.WriteLine("Enter amount to transfer: ");
+                                readResult = Console.ReadLine();
+                                if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                                    throw new IOException("Please enter a non-empty value.\n");
+                                else
+                                {
+                                    decimal amount = Convert.ToDecimal(readResult);
+                                    DoTransaction(internalCustomer, customer, amount);
+                                    return;
+                                }
+                            }
+                        }
+                        throw new InvalidOperationException("Customer not found.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
+        private void DoTransaction(InternalCustomer sender, InternalCustomer recipient, decimal amount)
+        {
+            sender.SetBalance(amount, true);
+            recipient.SetBalance(amount, false);
+
+            Console.WriteLine($"Your new balance: {sender.Balance}");
+            Console.WriteLine($"Recipient's new balance: {recipient.Balance}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
