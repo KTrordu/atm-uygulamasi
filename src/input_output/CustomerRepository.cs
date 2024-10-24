@@ -39,5 +39,27 @@ namespace ATMUygulamasi.src.input_output
                 customers = value;
             }
         }
+
+        /* public InternalCustomer? GetCustomer(string cardNumber, string cardPIN)
+        {
+            foreach (InternalCustomer customer in customers)
+            {
+                if (customer.CardNumber == cardNumber && customer.CardPIN == cardPIN)
+                    return customer;
+            }
+
+            return null;
+        }
+
+        public InternalCustomer? GetCustomer(string internalCustomerID)
+        {
+            foreach (InternalCustomer customer in customers)
+            {
+                if (customer.InternalCustomerID == internalCustomerID)
+                    return customer;
+            }
+
+            return null;
+        } */
     }
 }

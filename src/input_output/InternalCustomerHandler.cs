@@ -99,10 +99,7 @@ namespace ATMUygulamasi.src.input_output
                             Console.WriteLine("\nYou have successfully logged in.\n");
                             DisplayLoggedInCustomerScreen(exitATMHandler, internalCustomerLoggedIn!);
                         }
-                        else
-                        {
-                            throw new IOException("Your card number or pin is incorrect.\n");
-                        }
+                        else throw new IOException("Your card number or pin is incorrect.\n");
                     }
                 }
                 catch (Exception ex)
@@ -129,7 +126,7 @@ namespace ATMUygulamasi.src.input_output
         {
             await Task.Delay(1000);
             Console.Clear();
-            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName} ***"); //TODO fix this
+            Console.WriteLine($"\n*** Welcome, {internalCustomer.FullName()} ***");
             Console.WriteLine("1 - Withdraw money.");
             Console.WriteLine("2 - Deposit money.");
             Console.WriteLine("3 - View balance.");
