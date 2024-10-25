@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LccqrVLPmBc=",
+  "dgSpecHash": "yAZPayrkWflJNK1CJZuGlxw0KyYG/LkJSK8K1221jNZ7txm5FhmtO6jI5uGspAQXLLoF2NMpG35XkpT29kLPVg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\alptu\\Desktop\\Üni\\Projeler (BİDB)\\ATMUygulamasi\\ATMUygulamasi.csproj",
+  "projectFilePath": "/home/alptugyilmaz/github/bidb-projects/atm-uygulamasi/ATMUygulamasi.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

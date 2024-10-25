@@ -10,7 +10,7 @@ namespace ATMUygulamasi.src.input_output
         public void ExitATM()
         {
             Console.Clear();
-            Console.WriteLine("\nExiting the ATM.\n");
+            Console.WriteLine("Exiting the ATM.\n");
             Environment.Exit(0);
         }
     }

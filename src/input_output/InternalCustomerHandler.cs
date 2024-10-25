@@ -36,7 +36,6 @@ namespace ATMUygulamasi.src.input_output
             Console.WriteLine("2 - Deposit money.");
             Console.WriteLine("3 - View balance.");
             Console.WriteLine("4 - Transfer money.");
-            Console.WriteLine("5 - Return to main menu.");
             Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
         }
 
@@ -57,7 +56,6 @@ namespace ATMUygulamasi.src.input_output
                             case "1":
                                 WithdrawMoney(internalCustomer);
                                 break;
-
                             case "2":
                                 DepositMoney(internalCustomer);
                                 break;
@@ -66,9 +64,6 @@ namespace ATMUygulamasi.src.input_output
                                 break;
                             case "4":
                                 TransferMoney(internalCustomer, CustomerRepository.Instance);
-                                break;
-                            case "5":
-                                shouldExit = true;
                                 break;
                             case "exit":
                                 exitATMHandler.ExitATM();
@@ -156,7 +151,7 @@ namespace ATMUygulamasi.src.input_output
                         {
                             internalCustomerLoggedIn = AuthenticateCustomer(customerRepository, cardDetailsToCheck);
                             Console.Clear();
-                            Console.WriteLine("\nYou have successfully logged in.\n");
+                            Console.WriteLine("You have successfully logged in.\n");
                             DisplayLoggedInCustomerScreen(internalCustomerLoggedIn!);
                             GetLoggedInCustomerInput(exitATMHandler, internalCustomerLoggedIn!);
                         }

@@ -26,7 +26,7 @@ namespace ATMUygulamasi.src.input_output
                         switch (readResult.ToLower().Trim())
                         {
                             case "1":
-
+                                externalCustomerHandler.DisplayCustomerScreen(exitATMHandler);
                                 break;
                             case "2":
                                 internalCustomerHandler.DisplayCustomerScreen(exitATMHandler);
