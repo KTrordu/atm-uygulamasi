@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ATMUygulamasi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2fcfc569926c851220cb428326ecb4afeda04eb5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+acd1122c0208698782349803f5b50ce10167ecc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("ATMUygulamasi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ATMUygulamasi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
