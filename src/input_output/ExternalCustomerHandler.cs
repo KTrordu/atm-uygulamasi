@@ -130,7 +130,7 @@ namespace ATMUygulamasi.src.input_output
                         Console.ReadKey();
                         shouldExit = true;
 
-                        LoginNewCustomer(newInternalCustomer);
+                        LoginNewCustomer();
                     }
                 }
                 catch (Exception ex)
@@ -153,7 +153,7 @@ namespace ATMUygulamasi.src.input_output
             return cardNumber;
         }
 
-        private void LoginNewCustomer(InternalCustomer internalCustomer)
+        private void LoginNewCustomer()
         {
             InternalCustomerHandler internalCustomerHandler = new();
             internalCustomerHandler.DisplayCustomerScreen(new ExitATMHandler());
