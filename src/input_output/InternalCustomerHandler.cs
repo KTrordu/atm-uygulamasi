@@ -34,7 +34,7 @@ namespace ATMUygulamasi.src.input_output
             Console.WriteLine($"*** Welcome, {internalCustomer.FullName()} ***\n");
             Console.WriteLine("1 - Withdraw money.");
             Console.WriteLine("2 - Deposit money.");
-            Console.WriteLine("3 - View balance.");
+            Console.WriteLine("3 - View account information.");
             Console.WriteLine("4 - Transfer money.");
             Console.WriteLine("! - Type \"exit\" to exit the ATM.\n");
         }
@@ -60,7 +60,7 @@ namespace ATMUygulamasi.src.input_output
                                 DepositMoney(internalCustomer);
                                 break;
                             case "3":
-                                ViewBalance(internalCustomer);
+                                ViewAccountInformation(internalCustomer);
                                 break;
                             case "4":
                                 TransferMoney(internalCustomer, CustomerRepository.Instance);
@@ -242,9 +242,12 @@ namespace ATMUygulamasi.src.input_output
             }
         }
 
-        private void ViewBalance(InternalCustomer internalCustomer)
+        private void ViewAccountInformation(InternalCustomer internalCustomer)
         {
             Console.Clear();
+            Console.WriteLine($"Your Customer ID: {internalCustomer.InternalCustomerID}");
+            Console.WriteLine($"Your card number: {internalCustomer.CardNumber}");
+            Console.WriteLine($"Your card expiry date: {internalCustomer.CardExpiryDate}");
             Console.WriteLine($"Your balance: {internalCustomer.Balance}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
