@@ -19,7 +19,7 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
                     else
                     {

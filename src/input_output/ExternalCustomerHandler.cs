@@ -28,7 +28,7 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
                     else
                     {
@@ -68,17 +68,17 @@ namespace ATMUygulamasi.src.input_output
                 {
                     Console.WriteLine("Enter your first name: ");
                     string? firstName = Console.ReadLine();
-                    if (firstName == null || firstName.ToLower().Trim().Equals(""))
+                    if (firstName == null || firstName.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
 
                     Console.WriteLine("Enter your last name: ");
                     string? lastName = Console.ReadLine();
-                    if (lastName == null || lastName.ToLower().Trim().Equals(""))
+                    if (lastName == null || lastName.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
 
                     Console.WriteLine("Enter your external customer ID: ");
                     string? externalCustomerID = Console.ReadLine();
-                    if (externalCustomerID == null || externalCustomerID.ToLower().Trim().Equals("") || externalCustomerID.Any(char.IsLetter))
+                    if (externalCustomerID == null || externalCustomerID.Trim().Equals("") || externalCustomerID.Any(char.IsLetter))
                         throw new IOException("Please enter a valid value.\n");
 
                     if (int.Parse(externalCustomerID) == CustomerRepository.Instance.Customers.Count)
@@ -108,7 +108,7 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
                     else if (readResult.Length != 4)
                         throw new IOException("Please enter a 4-digit value.\n");

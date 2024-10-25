@@ -47,7 +47,7 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
                     else
                     {
@@ -108,6 +108,7 @@ namespace ATMUygulamasi.src.input_output
                             case "exit":
                                 exitATMHandler.ExitATM();
                                 break;
+                            default: throw new IOException("Please enter a valid option.\n");
                         }
                     }
                 }
@@ -189,8 +190,10 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
+                    else if (!readResult.Any(char.IsDigit))
+                        throw new IOException("Please enter a valid amount.\n");
                     else
                     {
                         decimal amount = Convert.ToDecimal(readResult);
@@ -221,8 +224,10 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
+                    else if (!readResult.Any(char.IsDigit))
+                        throw new IOException("Please enter a valid amount.\n");
                     else
                     {
                         decimal amount = Convert.ToDecimal(readResult);
@@ -265,8 +270,10 @@ namespace ATMUygulamasi.src.input_output
                 try
                 {
                     string? readResult = Console.ReadLine();
-                    if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                    if (readResult == null || readResult.Trim().Equals(""))
                         throw new IOException("Please enter a non-empty value.\n");
+                    else if (!readResult.Any(char.IsDigit))
+                        throw new IOException("Please enter a valid Customer ID.\n");
                     else
                     {
                         foreach (InternalCustomer customer in customerRepository.Customers)
@@ -275,7 +282,7 @@ namespace ATMUygulamasi.src.input_output
                             {
                                 Console.WriteLine("Enter amount to transfer: ");
                                 readResult = Console.ReadLine();
-                                if (readResult == null || readResult.ToLower().Trim().Equals(""))
+                                if (readResult == null || readResult.Trim().Equals(""))
                                     throw new IOException("Please enter a non-empty value.\n");
                                 else
                                 {

@@ -28,3 +28,18 @@ C:/Users/alptu/Desktop/Üni/Projeler (BİDB)/ATMUygulamasi/obj/Debug/net8.0/ref/
 /home/alptugyilmaz/github/bidb-projects/atm-uygulamasi/bin/Debug/net8.0/ATMUygulamasi.pdb
 /home/alptugyilmaz/github/bidb-projects/atm-uygulamasi/obj/Debug/net8.0/ATMUygulamasi.genruntimeconfig.cache
 /home/alptugyilmaz/github/bidb-projects/atm-uygulamasi/obj/Debug/net8.0/ref/ATMUygulamasi.dll
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\bin\Debug\net8.0\ATMUygulamasi.exe
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\bin\Debug\net8.0\ATMUygulamasi.deps.json
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\bin\Debug\net8.0\ATMUygulamasi.runtimeconfig.json
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\bin\Debug\net8.0\ATMUygulamasi.dll
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\bin\Debug\net8.0\ATMUygulamasi.pdb
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.AssemblyInfoInputs.cache
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.AssemblyInfo.cs
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.csproj.CoreCompileInputs.cache
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.sourcelink.json
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.dll
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\refint\ATMUygulamasi.dll
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.pdb
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ATMUygulamasi.genruntimeconfig.cache
+C:\Users\alptu\Desktop\Üni\Projeler (BİDB)\ATMUygulamasi\obj\Debug\net8.0\ref\ATMUygulamasi.dll
