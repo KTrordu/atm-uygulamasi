@@ -28,18 +28,16 @@ namespace ATMUygulamasi.src.users
             CardNumber = cardNumber;
         }
 
-        public void SetBalance(decimal amount, bool isWithdraw = true)
+        public void WithdrawMoney(decimal amount)
         {
-            if (!isWithdraw)
-            {
-                Balance += amount;
-            }
-            else
-            {
-                if (amount > Balance)
+            if (amount > Balance)
                     throw new ArgumentOutOfRangeException("Amount cannot be greater than the balance.");
-                else Balance -= amount;
-            }
+            else Balance -= amount;
+        }
+
+        public void DepositMoney(decimal amount)
+        {
+            Balance += amount;
         }
     }
 }

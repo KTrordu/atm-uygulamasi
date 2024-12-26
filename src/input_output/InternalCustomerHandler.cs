@@ -197,7 +197,7 @@ namespace ATMUygulamasi.src.input_output
                     else
                     {
                         decimal amount = Convert.ToDecimal(readResult);
-                        internalCustomer.SetBalance(amount);
+                        internalCustomer.WithdrawMoney(amount);
 
                         shouldExit = true;
 
@@ -231,7 +231,7 @@ namespace ATMUygulamasi.src.input_output
                     else
                     {
                         decimal amount = Convert.ToDecimal(readResult);
-                        internalCustomer.SetBalance(amount, false);
+                        internalCustomer.DepositMoney(amount);
 
                         shouldExit = true;
 
@@ -304,8 +304,8 @@ namespace ATMUygulamasi.src.input_output
 
         private void DoTransaction(InternalCustomer sender, InternalCustomer recipient, decimal amount)
         {
-            sender.SetBalance(amount, true);
-            recipient.SetBalance(amount, false);
+            sender.WithdrawMoney(amount);
+            recipient.DepositMoney(amount);
 
             Console.WriteLine($"Your new balance: {sender.Balance}");
             Console.WriteLine($"Recipient's new balance: {recipient.Balance}");
