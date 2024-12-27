@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ATMUygulamasi.src.card;
 
 namespace ATMUygulamasi.src.users
 {
@@ -14,18 +15,15 @@ namespace ATMUygulamasi.src.users
             get { return _balance; }
             private set { _balance = value; }
         }
-        public string CardPIN { get; set; }
-        public string CardNumber { get; set; }
-        public string CardExpiryDate { get; set; } = DateTime.Now.AddYears(5).ToString("MM/yy");
+
+        public Card card{ get; set; } = new Card("0000", "0000000000000000", DateTime.Now.AddYears(5).ToString("MM/yy"));
 
         public InternalCustomer(string firstName, string lastName, string internalCustomerID,
-        decimal balance = 100, string cardPIN = "0000", string cardNumber = "0000000000000000")
+        decimal balance = 100)
         : base(firstName, lastName)
         {
             InternalCustomerID = internalCustomerID;
             Balance = balance;
-            CardPIN = cardPIN;
-            CardNumber = cardNumber;
         }
 
         public void WithdrawMoney(decimal amount)

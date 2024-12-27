@@ -170,7 +170,7 @@ namespace ATMUygulamasi.src.input_output
         {
             foreach (InternalCustomer customer in customerRepository.Customers)
             {
-                if (cardDetailsToCheck[0] == customer.CardNumber && cardDetailsToCheck[1] == customer.CardPIN)
+                if (cardDetailsToCheck[0] == customer.card.CardNumber && cardDetailsToCheck[1] == customer.card.CardPIN)
                 {
                     return customer;
                 }
@@ -251,8 +251,8 @@ namespace ATMUygulamasi.src.input_output
         {
             Console.Clear();
             Console.WriteLine($"Your Customer ID: {internalCustomer.InternalCustomerID}");
-            Console.WriteLine($"Your card number: {internalCustomer.CardNumber}");
-            Console.WriteLine($"Your card expiry date: {internalCustomer.CardExpiryDate}");
+            Console.WriteLine($"Your card number: {internalCustomer.card.CardNumber}");
+            Console.WriteLine($"Your card expiry date: {internalCustomer.card.CardExpiryDate}");
             Console.WriteLine($"Your balance: {internalCustomer.Balance}");
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();

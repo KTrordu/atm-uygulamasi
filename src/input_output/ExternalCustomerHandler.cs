@@ -119,11 +119,11 @@ namespace ATMUygulamasi.src.input_output
                         string cardNumber = GenerateCardNumber();
                         string cardPIN = readResult;
                         InternalCustomer newInternalCustomer = new InternalCustomer(newCustomer.FirstName, newCustomer.LastName, 
-                        newCustomer.ExternalCustomerID, cardPIN: cardPIN, cardNumber: cardNumber);
+                        newCustomer.ExternalCustomerID);
                         customerRepository.Customers.Add(newInternalCustomer);
 
-                        Console.WriteLine($"Your card number is: {newInternalCustomer.CardNumber}");
-                        Console.WriteLine($"Your card expiration date is: {newInternalCustomer.CardExpiryDate}");
+                        Console.WriteLine($"Your card number is: {newInternalCustomer.card.CardNumber}");
+                        Console.WriteLine($"Your card expiration date is: {newInternalCustomer.card.CardExpiryDate}");
                         Console.WriteLine($"Your Internal Customer ID is: {newInternalCustomer.InternalCustomerID}");
                         Console.WriteLine($"Your balance is: {newInternalCustomer.Balance}");
                         Console.WriteLine("Press any key to continue...");
